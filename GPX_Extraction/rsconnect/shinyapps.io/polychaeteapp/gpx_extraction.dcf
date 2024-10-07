@@ -1,0 +1,10 @@
+name: gpx_extraction
+title:
+username: polychaeteapp
+account: polychaeteapp
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12940232
+bundleId: 9191661
+url: https://polychaeteapp.shinyapps.io/gpx_extraction/
+version: 1
