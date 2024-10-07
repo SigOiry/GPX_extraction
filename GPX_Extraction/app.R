@@ -12,7 +12,7 @@ ui <- fluidPage(
             textInput("drive_letter", "Enter Drive Letter:", value = "E"),
             actionButton("select_output_folder", "Select Output Folder"),
             verbatimTextOutput("output_folder_display"),
-            textInput("data_folder_name", "Data Folder Name:", value = "data"),
+            textInput("data_folder_name", "GPS Name:", value = "data"),
             checkboxInput("use_date_filter", "Extract files from specific date", value = TRUE),
             conditionalPanel(
                 condition = "input.use_date_filter == true",
@@ -135,7 +135,7 @@ server <- function(input, output, session) {
         # If checkbox is ticked, delete existing .gpx files from GPS after copying
         if (input$delete_existing) {
             # Remove the files we just copied from the GPS
-            file.remove(files_to_copy)
+            file.remove(gpx_files)
             output$status <- renderText(paste0("Files successfully copied and removed from the GPS. ", length(files_to_copy), " .gpx files copied to ", data_folder_path))
         } else {
             output$status <- renderText(paste0("Successfully copied ", length(files_to_copy), " .gpx files to ", data_folder_path))
