@@ -48,12 +48,12 @@ for(i in 1:nrow(band_files)){
   if(band_files$resolution[i] != 10){
     img <- resample(img,rast_temp)
     }
-  if(i == 1){
-    stk <- img
-  }else{
-    stk <- rast(list(stk,img))
-  }
+
+  assign(band_files$bands[i],img)
 }
+
+stk <- c(B01,B02,B03,B04,B05,B06,B07,B08,B08A,B09,B11,B12)
+
 
 writeRaster(stk,"S2_19092024.tif")
 
