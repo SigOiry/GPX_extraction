@@ -71,7 +71,8 @@ Sed <- shp %>%
   st_union() %>% 
   st_cast("POLYGON") %>% 
   st_sf() %>% 
-  mutate(class = "Sediment")
+  mutate(class = "Sediment",
+         classid = 1 %>%  as.integer())
 
 Algae <- shp %>% 
   dplyr::select(-c(GPS,filename)) %>% 
@@ -79,7 +80,8 @@ Algae <- shp %>%
   st_union() %>% 
   st_cast("POLYGON") %>% 
   st_sf() %>% 
-  mutate(class = "Macroalgae") 
+  mutate(class = "Macroalgae",
+         classid = 2 %>%  as.integer()) 
 
 Oy <- shp %>% 
   dplyr::select(-c(GPS,filename)) %>% 
@@ -87,7 +89,8 @@ Oy <- shp %>%
   st_union() %>% 
   st_cast("POLYGON") %>% 
   st_sf() %>% 
-  mutate(class = "Oyster")
+  mutate(class = "Oyster",
+         classid = 3 %>%  as.integer())
 
 
 merged_poly <- rbind(
